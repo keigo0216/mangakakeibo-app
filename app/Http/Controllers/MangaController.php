@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Manga;
+use Illuminate\Support\Facades\Auth;
 
 class MangaController extends Controller
 {
     public function index(Request $request)
     {
+        $user = Auth::user();
+
         $items = Manga::all();
         $total_price = 0;
         foreach( $items as $item) {
             $one_total_price = $item->getTotalPrice();
             $total_price = $total_price + $one_total_price;
         }
-        return view('manga.manga_list', ['items' => $items, 'total_price'=>$total_price]);
+
+        $param = ['items' => $items, 'total_price'=>$total_price, 'user' => $user];
+        return view('manga.manga_list', $param);
     }
 
     public function add(Request $request)

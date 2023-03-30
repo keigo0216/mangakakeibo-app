@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/manga_list.css')}}">
 </head>
 <body>
+    <p>USER: {{$user->name}}</p>
     <h1>合計金額:{{$total_price}}円</h1>
     <ol class="manga_list">
     @foreach($items as $item)
@@ -18,17 +19,6 @@
             <span class="total_price">合計{{$item->getTotalPrice()}}円</span>
         </li>
     @endforeach
-    <!-- @foreach($items as $item)
-        <tr>
-            <th>コミック</th><th>値段</th><th>冊数</th><th>合計</th>
-                <tr>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->price}}</td>
-                    <td>{{$item->purchase_number}}</td>
-                    <td>{{$item->getTotalPrice()}}</td>
-                </tr>
-        </tr>
-    @endforeach -->
     </ol>
     <a href="{{route('manga.add')}}">追加</a>
     

@@ -14,11 +14,11 @@ use App\Http\Controllers\MangaController;
 |
 */
 
-Route::get('/manga/index', [MangaController::class, 'index']);
+Route::get('/manga/index', [MangaController::class, 'index'])->middleware('auth');
 
-Route::get('/manga/add', [MangaController::class, 'add'])->name('manga.add');
-Route::post('/manga/add', [MangaController::class, 'create']);
+Route::get('/manga/add', [MangaController::class, 'add'])->middleware('auth')->name('manga.add');
+Route::post('/manga/add', [MangaController::class, 'create'])->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
