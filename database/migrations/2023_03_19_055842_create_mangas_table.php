@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('mangas', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('name');
             $table->float('price');
             $table->integer('purchase_number');

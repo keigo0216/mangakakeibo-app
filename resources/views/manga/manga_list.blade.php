@@ -9,13 +9,14 @@
 </head>
 <body>
     <p>USER: {{$user->name}}</p>
+    
     <h1>合計金額:{{$total_price}}円</h1>
     <ol class="manga_list">
     @foreach($items as $item)
         <li>
             <span class="name">{{$item->name}}</span>
-            <span class="price">{{$item->price}}冊</span>
-            <span class="purchase_number">{{$item->purchase_number}}円</span>
+            <span class="price">{{$item->price}}円</span>
+            <span class="purchase_number">{{$item->purchase_number}}冊</span>
             <span class="total_price">合計{{$item->getTotalPrice()}}円</span>
         </li>
     @endforeach

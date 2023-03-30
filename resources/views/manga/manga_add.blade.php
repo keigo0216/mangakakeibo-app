@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <p>USER: {{$user->id}}</p>
     @if (count($errors) > 0)
     <div>
         <ul>
@@ -19,6 +20,7 @@
     <form action="/manga/add" method="post">
         <table>
             @csrf
+            <input type='hidden' name='user_id' value="{{$user->id}}">
             <tr><th>名前</th><td><input type="text" name="name" value="{{old('name')}}"></td></tr>
             <tr><th>値段</th><td><input type="text" name="price" value="{{old('price')}}"></td></tr>
             <tr><th>購入数</th><td><input type="number" name="purchase_number" value=0></td></tr>

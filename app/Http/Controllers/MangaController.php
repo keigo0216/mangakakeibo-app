@@ -12,7 +12,7 @@ class MangaController extends Controller
     {
         $user = Auth::user();
 
-        $items = Manga::all();
+        $items = $user->mangas;
         $total_price = 0;
         foreach( $items as $item) {
             $one_total_price = $item->getTotalPrice();
@@ -25,7 +25,8 @@ class MangaController extends Controller
 
     public function add(Request $request)
     {
-        return view('manga.manga_add');
+        $user = Auth::user();
+        return view('manga.manga_add', ['user' => $user]);
     }
 
     public function create(Request $request)
@@ -34,6 +35,7 @@ class MangaController extends Controller
         $manga = new Manga;
         $form = $request->all();
         unset($form['_token']);
+        $manga->user_id = $request->user_id;
         $manga->name = $request->name;
         $manga->price = $request->price;
         $manga->purchase_number = $request->purchase_number;
