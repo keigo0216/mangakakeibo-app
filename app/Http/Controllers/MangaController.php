@@ -31,11 +31,12 @@ class MangaController extends Controller
 
     public function create(Request $request)
     {
+        $user = Auth::user();
         $this->validate($request, Manga::$rules);
         $manga = new Manga;
         $form = $request->all();
         unset($form['_token']);
-        $manga->user_id = $request->user_id;
+        $manga->user_id = $user->id;
         $manga->name = $request->name;
         $manga->price = $request->price;
         $manga->purchase_number = $request->purchase_number;
