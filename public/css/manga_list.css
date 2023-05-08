@@ -34,3 +34,9 @@ ol.manga_list li{
     transform: translateY(-50%);
   }
 
+  .plus {
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+

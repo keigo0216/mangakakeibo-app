@@ -44,4 +44,9 @@ class MangaController extends Controller
         return redirect('/manga/index');
 
     }
+
+    public function plus()
+    {
+        ///
+    }
 }
