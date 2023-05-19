@@ -18,8 +18,9 @@
             <span class="name">{{$item->name}}</span>
             <span class="price">{{$item->price}}円</span>
             <span class="purchase_number">{{$item->purchase_number}}冊</span>
-            <button class="plus" onclick="location.href='{{route('manga.add')}}'"><i class="fa-solid fa-circle-plus"></i></button>
+            <button class="plus" onclick="location.href='{{route('manga.plus', ['id' => $item->id])}}'"><i class="fa-solid fa-circle-plus"></i></button>
             <span class="total_price">合計{{$item->getTotalPrice()}}円</span>
+            <button class="plus" onclick="location.href='{{route('manga.delete', ['id' => $item->id])}}'"><i class="fa-solid fa-delete-left"></i></button>
         </li>
     @endforeach
     </ol>

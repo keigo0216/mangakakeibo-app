@@ -22,3 +22,7 @@ Route::post('/manga/add', [MangaController::class, 'create'])->middleware('auth'
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
+
+Route::get('/plus/{id}', [MangaController::class, 'plus'])->middleware('auth')->name('manga.plus');
+
+Route::get('/delete/{id}', [MangaController::class, 'delete'])->middleware('auth')->name('manga.delete');

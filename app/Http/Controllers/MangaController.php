@@ -45,8 +45,20 @@ class MangaController extends Controller
 
     }
 
-    public function plus()
+    public function plus(Request $request, $id)
     {
-        ///
+        $user = Auth::user();
+        $manga = Manga::find($id);
+        $manga -> purchase_number = $manga -> purchase_number + 1;
+        $manga->save();
+        return redirect('/manga/index');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $user = Auth::user();
+        $manga = Manga::find($id);
+        $manga -> delete();
+        return redirect('/manga/index');
     }
 }
