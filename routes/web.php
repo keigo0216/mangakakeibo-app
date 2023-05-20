@@ -14,7 +14,11 @@ use App\Http\Controllers\MangaController;
 |
 */
 
-Route::get('/', [MangaController::class, 'index'])->middleware('auth');
+Route::get('/', function () {
+    return '<html><body>こんにちは</body></html>';
+});
+
+Route::get('/manga/index', [MangaController::class, 'index'])->middleware('auth');
 
 Route::get('/manga/add', [MangaController::class, 'add'])->middleware('auth')->name('manga.add');
 Route::post('/manga/add', [MangaController::class, 'create'])->middleware('auth');
