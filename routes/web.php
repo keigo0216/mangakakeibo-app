@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MangaController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,7 @@ use App\Http\Controllers\MangaController;
 |
 */
 
-Route::get('/', function () {
-    return '<html><body>こんにちは</body></html>';
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/manga/index', [MangaController::class, 'index'])->middleware('auth');
 
